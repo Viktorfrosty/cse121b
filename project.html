@@ -28,6 +28,27 @@
   <main id="gridly">
     <h1>Project</h1>
     <h2>"Magic: The Gathering" Card Data Retriever</h2>
+    <h3>filter by color</h3>
+    <select id="filteredbycolor" title="Choose a card color.">
+      <option value="all" selected>No Filter</option>
+      <option value="W">white</option>
+      <option value="U">blue</option>
+    </select>
+    <h3>filter by type</h3>
+    <select id="filteredbytype" title="Choose a card type.">
+      <option value="all" selected>No Filter</option>
+      <option value="Creature">Creature</option>
+      <option value="Sorcery">Sorcery</option>
+      <option value="Instant">Instant</option>
+      <option value="Enchantment">Enchantment</option>
+    </select>
+    <h3>filter by rarity</h3>
+    <select id="filteredbyrarity" title="Choose a card rarity.">
+      <option value="all" selected>No Filter</option>
+      <option value="Common">Common</option>
+      <option value="Uncommon">Uncommon</option>
+      <option value="Rare">Rare</option>
+    </select>
     <div id="cards"></div>
   </main>
   <footer>

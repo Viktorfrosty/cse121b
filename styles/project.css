@@ -3,11 +3,13 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: .5rem;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 #cards article {
-    height: auto;
+    height: 750px;
+    width: 300px;
     margin: .5rem;
     border: 1px solid rgba(0, 0, 0, .1);
     padding: 1rem;
@@ -15,11 +17,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 2.5px;
 }
 
-#cards h4 {
+#cards h3 {
     color: navy;
+}
+
+#cards h4, #cards h5 {
+    color: black;
     font-size: smaller;
 }
 
@@ -28,6 +34,12 @@
     width: 250px;
     height: auto;
     box-shadow: 0 0 30px #777;
-    margin: .5rem;
+    margin-top: .25rem;
+    margin-bottom: 1rem;
     border-radius: 10px;
+}
+
+#gridly h3 {
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
