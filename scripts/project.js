@@ -60,7 +60,7 @@ function displayCards(cards) {
             img.setAttribute("src", card.imageUrl);
             img.setAttribute("alt", `${card.name} card image`);
 
-            // Appending the childs to the DOM.
+            // Appending the childs.
             article.appendChild(h3);
             article.appendChild(img);
             article.appendChild(h4_colorIdentity);
@@ -80,14 +80,25 @@ function displayCards(cards) {
     });
 };
 
-// async getCards Function using fetch().
+// Function using fetch().
 async function getCards() {
+
+    //await and fetch()
     const response = await fetch("https://api.magicthegathering.io/v1/cards")
+
+    // Response handler.
     if (response.ok) {
+        
+        // Response handling.
         cardList = await response.json();
+
+        // Array Method to make a verification to the array.
+        console.log(`cardList.cards is an array: ${Array.isArray(cardList.cards)}`)
+
+        // displayCards function caller with an array as parameter.
         displayCards(cardList.cards)
     }
-};
+}
 
 // Reset function, this will clean the list.
 const reset = () => {
@@ -108,7 +119,7 @@ const filterCards = (cards) => {
     // Conditional branching.
     switch (true) {
         
-        // Case evaluators for the different possible combinations obtained from the selectors.
+        // Case evaluators for the different possible combinations obtained from the selectors, some of them have array method ".filter". 
         case (filterbycolor == "all" && filterbytype == "all" && filterbyrarity == "all"):
             displayCards(cards)
             break;
@@ -445,11 +456,10 @@ const filterCards = (cards) => {
             var blue_enchantment_rare = blue_enchantment.filter(card => card.rarity.includes("Rare"));
             displayCards(blue_enchantment_rare);
             break;
-
     }
 }
 
-// Event Listeners.
+// Event Listeners  (DOM events).
 document.getElementById("filteredbycolor").addEventListener("change", () => {filterCards(cardList.cards)});
 document.getElementById("filteredbytype").addEventListener("change", () => {filterCards(cardList.cards)});
 document.getElementById("filteredbyrarity").addEventListener("change", () => {filterCards(cardList.cards)});
