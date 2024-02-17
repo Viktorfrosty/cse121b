@@ -1,9 +1,13 @@
 // Declaring and initializing global variables
 const cardsElement = document.getElementById("cards");
-let cardList = null;
+
+// Array.
+let cardList = [];
 
 // async displayCards Function
 function displayCards(cards) {
+
+    // Array iteration.
     cards.forEach(card => {
 
         // some info was forbidden, so I put an "if" to remove the inaccesible data.
@@ -85,80 +89,370 @@ async function getCards() {
     }
 };
 
-// reset function.
+// Reset function, this will clean the list.
 const reset = () => {
     cardsElement.innerHTML = "";
 };
 
 // Cards filters.
-const filterCardsbycolor = (cards) => {
+const filterCards = (cards) => {
+
+    // Reset function caller.
     reset();
+
+    // Internal variables of the function, these are modified by the eventlisteners.
     var filterbycolor = document.getElementById("filteredbycolor").value;
-    switch (filterbycolor) {
-        case "all":
-            displayCards(cards);
+    var filterbytype = document.getElementById("filteredbytype").value;
+    var filterbyrarity = document.getElementById("filteredbyrarity").value;
+
+    // Conditional branching.
+    switch (true) {
+        
+        // Case evaluators for the different possible combinations obtained from the selectors.
+        case (filterbycolor == "all" && filterbytype == "all" && filterbyrarity == "all"):
+            displayCards(cards)
             break;
-        case "W":
+        
+        case (filterbycolor == "W" && filterbytype == "all" && filterbyrarity == "all"):
             var white = cards.filter(card => card.colorIdentity.includes("W"));
             displayCards(white);
             break;
-        case "U":
-            var blue = cards.filter(card => card.colorIdentity.includes("U"));
-            displayCards(blue);
+
+        case (filterbycolor == "W" && filterbytype == "Creature" && filterbyrarity == "all"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_creature = white.filter(card => card.type.includes("Creature"));
+            displayCards(white_creature);
             break;
-    }
-}
-const filterCardsbytype = (cards) => {
-    reset();
-    var filterbytype = document.getElementById("filteredbytype").value;
-    switch (filterbytype) {
-        case "all":
-            displayCards(cards);
+
+        case (filterbycolor == "W" && filterbytype == "Creature" && filterbyrarity == "Common"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_creature = white.filter(card => card.type.includes("Creature"));
+            var white_creature_common = white_creature.filter(card => card.rarity.includes("Common"));
+            displayCards(white_creature_common);
             break;
-        case "Creature":
+
+        case (filterbycolor == "W" && filterbytype == "Creature" && filterbyrarity == "Uncommon"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_creature = white.filter(card => card.type.includes("Creature"));
+            var white_creature_uncommon = white_creature.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(white_creature_uncommon);
+            break;
+        
+        case (filterbycolor == "W" && filterbytype == "Creature" && filterbyrarity == "Rare"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_creature = white.filter(card => card.type.includes("Creature"));
+            var white_creature_rare = white_creature.filter(card => card.rarity.includes("Rare"));
+            displayCards(white_creature_rare);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Sorcery" && filterbyrarity == "all"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_sorcery = white.filter(card => card.type.includes("Sorcery"));
+            displayCards(white_sorcery);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Sorcery" && filterbyrarity == "Common"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_sorcery = white.filter(card => card.type.includes("Sorcery"));
+            var white_sorcery_common = white_sorcery.filter(card => card.rarity.includes("Common"));
+            displayCards(white_sorcery_common);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Sorcery" && filterbyrarity == "Uncommon"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_sorcery = white.filter(card => card.type.includes("Sorcery"));
+            var white_sorcery_uncommon = white_sorcery.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(white_sorcery_uncommon);
+            break;
+        
+        case (filterbycolor == "W" && filterbytype == "Sorcery" && filterbyrarity == "Rare"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_sorcery = white.filter(card => card.type.includes("Sorcery"));
+            var white_sorcery_rare = white_sorcery.filter(card => card.rarity.includes("Rare"));
+            displayCards(white_sorcery_rare);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Instant" && filterbyrarity == "all"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_instant = white.filter(card => card.type.includes("Instant"));
+            displayCards(white_instant);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Instant" && filterbyrarity == "Common"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_instant = white.filter(card => card.type.includes("Instant"));
+            var white_instant_common = white_instant.filter(card => card.rarity.includes("Common"));
+            displayCards(white_instant_common);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Instant" && filterbyrarity == "Uncommon"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_instant = white.filter(card => card.type.includes("Instant"));
+            var white_instant_uncommon = white_instant.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(white_instant_uncommon);
+            break;
+        
+        case (filterbycolor == "W" && filterbytype == "Instant" && filterbyrarity == "Rare"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_instant = white.filter(card => card.type.includes("Instant"));
+            var white_instant_rare = white_instant.filter(card => card.rarity.includes("Rare"));
+            displayCards(white_instant_rare);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Enchantment" && filterbyrarity == "all"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_enchantment = white.filter(card => card.type.includes("Enchantment"));
+            displayCards(white_enchantment);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Enchantment" && filterbyrarity == "Common"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_enchantment = white.filter(card => card.type.includes("Enchantment"));
+            var white_enchantment_common = white_enchantment.filter(card => card.rarity.includes("Common"));
+            displayCards(white_enchantment_common);
+            break;
+
+        case (filterbycolor == "W" && filterbytype == "Enchantment" && filterbyrarity == "Uncommon"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_enchantment = white.filter(card => card.type.includes("Enchantment"));
+            var white_enchantment_uncommon = white_enchantment.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(white_enchantment_uncommon);
+            break;
+        
+        case (filterbycolor == "W" && filterbytype == "Enchantment" && filterbyrarity == "Rare"):
+            var white = cards.filter(card => card.colorIdentity.includes("W"));
+            var white_enchantment = white.filter(card => card.type.includes("Enchantment"));
+            var white_enchantment_rare = white_enchantment.filter(card => card.rarity.includes("Rare"));
+            displayCards(white_enchantment_rare);
+            break;
+        
+        case (filterbycolor == "all" && filterbytype == "Creature" && filterbyrarity == "all"):
             var creature = cards.filter(card => card.type.includes("Creature"));
             displayCards(creature);
             break;
-        case "Sorcery":
+
+        case (filterbycolor == "all" && filterbytype == "Creature" && filterbyrarity == "Common"):
+            var creature = cards.filter(card => card.type.includes("Creature"));
+            var creature_common = creature.filter(card => card.rarity.includes("Common"));
+            displayCards(creature_common);
+            break;
+
+       case (filterbycolor == "all" && filterbytype == "Creature" && filterbyrarity == "Uncommon"):
+            var creature = cards.filter(card => card.type.includes("Creature"));
+            var creature_uncommon = creature.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(creature_uncommon);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Creature" && filterbyrarity == "Rare"):
+            var creature = cards.filter(card => card.type.includes("Creature"));
+            var creature_rare = creature.filter(card => card.rarity.includes("Rare"));
+            displayCards(creature_rare);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Sorcery" && filterbyrarity == "all"):
             var sorcery = cards.filter(card => card.type.includes("Sorcery"));
             displayCards(sorcery);
             break;
-        case "Instant":
+        
+        case (filterbycolor == "all" && filterbytype == "Sorcery" && filterbyrarity == "Common"):
+            var sorcery = cards.filter(card => card.type.includes("Sorcery"));
+            var sorcery_common = sorcery.filter(card => card.rarity.includes("Common"));
+            displayCards(sorcery_common);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Sorcery" && filterbyrarity == "Uncommon"):
+            var sorcery = cards.filter(card => card.type.includes("Sorcery"));
+            var sorcery_uncommon = sorcery.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(sorcery_uncommon);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Sorcery" && filterbyrarity == "Rare"):
+            var sorcery = cards.filter(card => card.type.includes("Sorcery"));
+            var sorcery_rare = sorcery.filter(card => card.rarity.includes("Rare"));
+            displayCards(sorcery_rare);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Instant" && filterbyrarity == "all"):
             var instant = cards.filter(card => card.type.includes("Instant"));
             displayCards(instant);
             break;
-        case "Enchantment":
+
+        case (filterbycolor == "all" && filterbytype == "Instant" && filterbyrarity == "Common"):
+            var instant = cards.filter(card => card.type.includes("Instant"));
+            var instant_common = instant.filter(card => card.rarity.includes("Common"));
+            displayCards(instant_common);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Instant" && filterbyrarity == "Uncommon"):
+            var instant = cards.filter(card => card.type.includes("Instant"));
+            var instant_uncommon = instant.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(instant_uncommon);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Instant" && filterbyrarity == "Rare"):
+            var instant = cards.filter(card => card.type.includes("Instant"));
+            var instant_rare = instant.filter(card => card.rarity.includes("Rare"));
+            displayCards(instant_rare);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Enchantment" && filterbyrarity == "all"):
             var enchantment = cards.filter(card => card.type.includes("Enchantment"));
             displayCards(enchantment);
             break;
-    }
-}
-const filterCardsbyrarity = (cards) => {
-    reset();
-    var filterbyrarity = document.getElementById("filteredbyrarity").value;
-    switch (filterbyrarity) {
-        case "all":
-            displayCards(cards);
+
+        case (filterbycolor == "all" && filterbytype == "Enchantment" && filterbyrarity == "Common"):
+            var enchantment = cards.filter(card => card.type.includes("Enchantment"));
+            var enchantment_common = enchantment.filter(card => card.rarity.includes("Common"));
+            displayCards(enchantment_common);
             break;
-        case "Common":
+
+        case (filterbycolor == "all" && filterbytype == "Enchantment" && filterbyrarity == "Uncommon"):
+            var enchantment = cards.filter(card => card.type.includes("Enchantment"));
+            var enchantment_uncommon = enchantment.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(enchantment_uncommon);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "Enchantment" && filterbyrarity == "Rare"):
+            var enchantment = cards.filter(card => card.type.includes("Enchantment"));
+            var enchantment_rare = enchantment.filter(card => card.rarity.includes("Rare"));
+            displayCards(enchantment_rare);
+            break;
+
+        case (filterbycolor == "all" && filterbytype == "all" && filterbyrarity == "Common"):
             var common = cards.filter(card => card.rarity.includes("Common"));
             displayCards(common);
             break;
-        case "Uncommon":
+
+        case (filterbycolor == "all" && filterbytype == "all" && filterbyrarity == "Uncommon"):
             var uncommon = cards.filter(card => card.rarity.includes("Uncommon"));
             displayCards(uncommon);
             break;
-        case "Rare":
+
+        case (filterbycolor == "all" && filterbytype == "all" && filterbyrarity == "Rare"):
             var rare = cards.filter(card => card.rarity.includes("Rare"));
             displayCards(rare);
             break;
+
+        case (filterbycolor == "U" && filterbytype == "all" && filterbyrarity == "all"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            displayCards(blue);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Creature" && filterbyrarity == "all"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_creature = blue.filter(card => card.type.includes("Creature"));
+            displayCards(blue_creature);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Creature" && filterbyrarity == "Common"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_creature = blue.filter(card => card.type.includes("Creature"));
+            var blue_creature_common = blue_creature.filter(card => card.rarity.includes("Common"));
+            displayCards(blue_creature_common);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Creature" && filterbyrarity == "Uncommon"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_creature = blue.filter(card => card.type.includes("Creature"));
+            var blue_creature_uncommon = blue_creature.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(blue_creature_uncommon);
+            break;
+        
+        case (filterbycolor == "U" && filterbytype == "Creature" && filterbyrarity == "Rare"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_creature = blue.filter(card => card.type.includes("Creature"));
+            var blue_creature_rare = blue_creature.filter(card => card.rarity.includes("Rare"));
+            displayCards(blue_creature_rare);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Sorcery" && filterbyrarity == "all"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_sorcery = blue.filter(card => card.type.includes("Sorcery"));
+            displayCards(blue_sorcery);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Sorcery" && filterbyrarity == "Common"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_sorcery = blue.filter(card => card.type.includes("Sorcery"));
+            var blue_sorcery_common = blue_sorcery.filter(card => card.rarity.includes("Common"));
+            displayCards(blue_sorcery_common);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Sorcery" && filterbyrarity == "Uncommon"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_sorcery = blue.filter(card => card.type.includes("Sorcery"));
+            var blue_sorcery_uncommon = blue_sorcery.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(blue_sorcery_uncommon);
+            break;
+        
+        case (filterbycolor == "U" && filterbytype == "Sorcery" && filterbyrarity == "Rare"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_sorcery = blue.filter(card => card.type.includes("Sorcery"));
+            var blue_sorcery_rare = blue_sorcery.filter(card => card.rarity.includes("Rare"));
+            displayCards(blue_sorcery_rare);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Instant" && filterbyrarity == "all"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_instant = blue.filter(card => card.type.includes("Instant"));
+            displayCards(blue_instant);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Instant" && filterbyrarity == "Common"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_instant = blue.filter(card => card.type.includes("Instant"));
+            var blue_instant_common = blue_instant.filter(card => card.rarity.includes("Common"));
+            displayCards(blue_instant_common);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Instant" && filterbyrarity == "Uncommon"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_instant = blue.filter(card => card.type.includes("Instant"));
+            var blue_instant_uncommon = blue_instant.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(blue_instant_uncommon);
+            break;
+        
+        case (filterbycolor == "U" && filterbytype == "Instant" && filterbyrarity == "Rare"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_instant = blue.filter(card => card.type.includes("Instant"));
+            var blue_instant_rare = blue_instant.filter(card => card.rarity.includes("Rare"));
+            displayCards(blue_instant_rare);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Enchantment" && filterbyrarity == "all"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_enchantment = blue.filter(card => card.type.includes("Enchantment"));
+            displayCards(blue_enchantment);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Enchantment" && filterbyrarity == "Common"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_enchantment = blue.filter(card => card.type.includes("Enchantment"));
+            var blue_enchantment_common = blue_enchantment.filter(card => card.rarity.includes("Common"));
+            displayCards(blue_enchantment_common);
+            break;
+
+        case (filterbycolor == "U" && filterbytype == "Enchantment" && filterbyrarity == "Uncommon"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_enchantment = blue.filter(card => card.type.includes("Enchantment"));
+            var blue_enchantment_uncommon = blue_enchantment.filter(card => card.rarity.includes("Uncommon"));
+            displayCards(blue_enchantment_uncommon);
+            break;
+        
+        case (filterbycolor == "U" && filterbytype == "Enchantment" && filterbyrarity == "Rare"):
+            var blue = cards.filter(card => card.colorIdentity.includes("U"));
+            var blue_enchantment = blue.filter(card => card.type.includes("Enchantment"));
+            var blue_enchantment_rare = blue_enchantment.filter(card => card.rarity.includes("Rare"));
+            displayCards(blue_enchantment_rare);
+            break;
+
     }
 }
 
 // Event Listeners.
-document.getElementById("filteredbycolor").addEventListener("change", () => {filterCardsbycolor(cardList.cards)});
-document.getElementById("filteredbytype").addEventListener("change", () => {filterCardsbytype(cardList.cards)});
-document.getElementById("filteredbyrarity").addEventListener("change", () => {filterCardsbyrarity(cardList.cards)});
+document.getElementById("filteredbycolor").addEventListener("change", () => {filterCards(cardList.cards)});
+document.getElementById("filteredbytype").addEventListener("change", () => {filterCards(cardList.cards)});
+document.getElementById("filteredbyrarity").addEventListener("change", () => {filterCards(cardList.cards)});
 
 // Function Caller
 getCards();
